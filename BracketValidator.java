@@ -19,13 +19,11 @@ public class BracketValidator {
 		
 		for(int i = 0; i <str.length(); i++){
 			char curr = str.charAt(i);
-			if( openings.isEmpty() && (curr=='}' || curr==']' || curr==')')) {
-				return false;
-			}
 			if( curr!='}' && curr!=']' && curr!=')'){
 				openings.push(curr);
 			}
 			else {
+				if( openings.isEmpty() ) return false;
 				if(map.get(curr) != openings.pop().charValue()) {
 					return false;
 				}
